@@ -95,7 +95,7 @@
       display: inline-block;
       line-height: 42px;
       font-size: 14px;
-      background-color: #5D81F9;
+      background-color: #2460e0;
       color: #fff;
       text-align: center;
       border: 0;

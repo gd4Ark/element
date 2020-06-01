@@ -118,11 +118,11 @@
           color: #888;
 
           &:hover {
-            color: #5D81F9;
+            color: #2460e0;
           }
           &.active {
              font-weight: bold;
-             color: #5D81F9;
+             color: #2460e0;
            }
         }
       }
@@ -147,7 +147,7 @@
           left: calc(50% - 15px);
           width: 30px;
           height: 2px;
-          background: #5D81F9;
+          background: #2460e0;
         }
       }
     }
@@ -182,7 +182,7 @@
 
     .is-active {
       span, i {
-        color: #5D81F9;
+        color: #2460e0;
       }
       i {
         transform: rotateZ(180deg) translateY(3px);
@@ -191,7 +191,7 @@
 
     &:hover {
       span, i {
-        color: #5D81F9;
+        color: #2460e0;
       }
     }
   }
@@ -509,10 +509,10 @@
       };
       xhr.open('GET', '/element/versions.json');
       xhr.send();
-      let primaryLast = '#5D81F9';
+      let primaryLast = '#2460e0';
       bus.$on(ACTION_USER_CONFIG_UPDATE, (val) => {
         let primaryColor = val.global['$--color-primary'];
-        if (!primaryColor) primaryColor = '#5D81F9';
+        if (!primaryColor) primaryColor = '#2460e0';
         const base64svg = 'data:image/svg+xml;base64,';
         const imgSet = document.querySelectorAll('h1 img');
         imgSet.forEach((img) => {

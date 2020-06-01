@@ -20,7 +20,7 @@
     'borderExtraLight': '$--border-color-extra-light'
   };
   const original = {
-    primary: '#5D81F9',
+    primary: '#2460e0',
     success: '#2FD163',
     warning: '#F5A623',
     danger: '#FF4D4F',
@@ -101,7 +101,7 @@ Element 主要品牌颜色是鲜艳、友好的蓝色。
 <el-row :gutter="12">
   <el-col :span="10" :xs="{span: 12}">
     <div class="demo-color-box" :style="{ background: primary }">Brand Color
-      <div class="value">#5D81F9</div>
+      <div class="value">#2460e0</div>
       <div class="bg-color-sub" :style="{ background: tintColor(primary, 0.9) }">
         <div
           class="bg-blue-sub-item"
