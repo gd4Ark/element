@@ -516,7 +516,7 @@ export default {
 :::demo
 
 ```html
-<el-button @click="onSyncUpdate">异步更新</el-button>
+<el-button @click="onSyncUpdate">Append</el-button>
 <el-button @click="onSetOptions">SetOptions</el-button>
 <el-edit-table ref="form" :columns="columns" v-model="data"></el-edit-table>
 
@@ -524,7 +524,13 @@ export default {
   export default {
     data() {
       return {
-        data: [],
+        id: 1,
+        data: [
+          {
+            id: `第 1 行`,
+            option: '',
+          },
+        ],
         columns: [
           {
             id: 'id',
@@ -549,20 +555,12 @@ export default {
     },
     methods: {
       onSyncUpdate() {
-        this.data = [
-          {
-            id: '第 1 行',
+        for (let i = 0; i < 3; i++) {
+          this.data.push({
+            id: `第 ${++this.id} 行`,
             option: '',
-          },
-          {
-            id: '第 2 行',
-            option: '',
-          },
-          {
-            id: '第 3 行',
-            option: '',
-          },
-        ]
+          })
+        }
       },
       onSetOptions() {
         this.data.forEach((e, i) => {
