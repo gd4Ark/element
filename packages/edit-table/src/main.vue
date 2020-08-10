@@ -171,6 +171,8 @@ export default {
     value(v) {
       this.resetRowOptionsData(v, this.oldValue);
 
+      this.oldValue = [...v];
+
       this.indexKeys = v.map((_, i) => i);
     }
   },
@@ -207,7 +209,6 @@ export default {
     },
 
     updateValue(value) {
-      this.oldValue = [...this.model.data];
       this.$emit('input', value);
     },
 
