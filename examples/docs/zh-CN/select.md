@@ -515,6 +515,65 @@
 ```
 :::
 
+### 扩展插槽
+
+选项列表底部扩展内容
+:::demo 扩展插槽可以插入自己需要的功能按钮。
+```html
+<template>
+  <div>
+    <el-select v-model="value" placeholder="请选择">
+      <el-option
+        v-for="item in cities"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+      </el-option>
+      <div slot="extra">
+        <el-button type="text" @click="handleRefresh" style="width: 100%;">
+          刷新城市列表
+        </el-button>
+      </div>
+    </el-select>
+  </div>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        cities: [{
+          value: 'Beijing',
+          label: '北京'
+        }, {
+          value: 'Shanghai',
+          label: '上海'
+        }, {
+          value: 'Nanjing',
+          label: '南京'
+        }, {
+          value: 'Chengdu',
+          label: '成都'
+        }, {
+          value: 'Shenzhen',
+          label: '深圳'
+        }, {
+          value: 'Guangzhou',
+          label: '广州'
+        }],
+        value: ''
+      };
+    },
+    methods: {
+      handleRefresh() {
+        // 重新请求获取 cities 数据
+      },
+    }
+  }
+</script>
+```
+:::
+
 :::tip
 如果 Select 的绑定值为对象类型，请务必指定 `value-key` 作为它的唯一性标识。
 :::
@@ -565,6 +624,7 @@
 |    —    | Option 组件列表 |
 | prefix  | Select 组件头部内容 |
 | empty | 无选项时的列表 |
+| extra | 选项列表底部扩展内容 |
 
 ### Option Group Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
