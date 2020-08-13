@@ -57,7 +57,7 @@
       :name="name && name[0]"
       @input="handleStartInput"
       @change="handleStartChange"
-      @focus="handleFocus"
+      @focus="handleFocus('min')"
       class="el-range-input">
     <slot name="range-separator">
       <span class="el-range-separator">{{ rangeSeparator }}</span>
@@ -72,7 +72,7 @@
       :name="name && name[1]"
       @input="handleEndInput"
       @change="handleEndChange"
-      @focus="handleFocus"
+      @focus="handleFocus('max')"
       class="el-range-input">
     <i
       @click="handleClickIcon"
@@ -401,7 +401,8 @@ export default {
       showClose: false,
       userInput: null,
       valueOnOpen: null, // value when picker opens, used to determine whether to emit change
-      unwatchPickerOptions: null
+      unwatchPickerOptions: null,
+      inputType: null
     };
   },
 
@@ -724,10 +725,11 @@ export default {
       this.userInput = initialValue === '' ? null : initialValue;
     },
 
-    handleFocus() {
+    handleFocus(inputType) {
       const type = this.type;
 
       if (HAVE_TRIGGER_TYPES.indexOf(type) !== -1 && !this.pickerVisible) {
+        this.inputType = inputType;
         this.pickerVisible = true;
       }
       this.$emit('focus', this);
@@ -814,6 +816,7 @@ export default {
 
       this.picker.value = this.parsedValue;
       this.picker.resetView && this.picker.resetView();
+      this.picker.inputType = this.inputType;
 
       this.$nextTick(() => {
         this.picker.adjustSpinners && this.picker.adjustSpinners();
