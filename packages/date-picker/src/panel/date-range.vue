@@ -352,6 +352,11 @@
     },
 
     watch: {
+      visible(v) {
+        if (!v) {
+          this.rangeState.selecting = false;
+        }
+      },
       minDate(val) {
         this.dateUserInput.min = null;
         this.timeUserInput.min = null;
@@ -536,6 +541,35 @@
 
       handleRangePick(val, close = true) {
         const defaultTime = this.defaultTime || [];
+
+        let save = false;
+        const firstPick = val.minDate && !val.maxDate;
+
+        if (this.minDate && this.maxDate && this.inputType) {
+          if (this.inputType === 'min') {
+            let newDate = '';
+
+            if (firstPick) {
+              newDate = val.minDate;
+            } else {
+              newDate = val.minDate <= this.minDate ? val.minDate : val.maxDate;
+            }
+
+            if (newDate < this.maxDate) {
+              val.minDate = newDate;
+              val.maxDate = this.maxDate;
+              save = true;
+            }
+          } else if (this.inputType === 'max') {
+            const newDate = firstPick ? val.minDate : val.maxDate;
+            if (newDate > this.minDate) {
+              val.minDate = this.minDate;
+              val.maxDate = newDate;
+              save = true;
+            }
+          }
+        }
+
         const minDate = modifyWithTimeString(val.minDate, defaultTime[0]);
         const maxDate = modifyWithTimeString(val.maxDate, defaultTime[1]);
 
@@ -545,12 +579,18 @@
         this.onPick && this.onPick(val);
         this.maxDate = maxDate;
         this.minDate = minDate;
-
         // workaround for https://github.com/ElemeFE/element/issues/7539, should remove this block when we don't have to care about Chromium 55 - 57
         setTimeout(() => {
           this.maxDate = maxDate;
           this.minDate = minDate;
         }, 10);
+
+        if (save) {
+          this.inputType = null;
+          close = false;
+          this.handleConfirm(true);
+        }
+  
         if (!close || this.showTime) return;
         this.handleConfirm();
       },
