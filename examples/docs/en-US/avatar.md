@@ -67,17 +67,30 @@ It supports images, Icons, or characters
 ```
 :::
 
-### Fallback when image load error
+### Tooltip
 
-fallback when image load error
+When there is an incoming text or tooltip support hover display, you can also customize tooltip content by tooltip.
 
 :::demo
+
 ```html
 <template>
   <div class="demo-type">
-    <el-avatar :size="60" src="https://empty" @error="errorHandler">
-      <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"/>
-      </el-avatar>
+    <div>
+      <el-avatar
+        tooltip="This is a custom tooltip content"
+        icon="el-icon-user-solid"
+      ></el-avatar>
+    </div>
+    <div>
+      <el-avatar
+        text="element"
+        src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+      ></el-avatar>
+    </div>
+    <div>
+      <el-avatar text="James Gosling" bgColor="#409eff"></el-avatar>
+    </div>
   </div>
 </template>
 <script>
@@ -85,12 +98,83 @@ fallback when image load error
     methods: {
       errorHandler() {
         return true
-      }
-    }
+      },
+    },
   }
 </script>
-
 ```
+
+:::
+
+
+### Fallback when image load error
+
+fallback when image load error or src is empty
+
+customize the display via the default slot, or pass a placeholder text by passing the text attribute
+
+:::demo
+```html
+<template>
+  <div class="demo-type">
+    <div>
+      <el-avatar src="https://empty" @error="errorHandler">
+        <img
+          src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"
+        />
+      </el-avatar>
+    </div>
+    <div>
+      <el-avatar text="James Gosling" bgColor="#409eff"></el-avatar>
+    </div>
+  </div>
+</template>
+<script>
+  export default {
+    methods: {
+      errorHandler() {
+        return true
+      },
+    },
+  }
+</script>
+```
+
+:::
+
+### Abbreviated name
+
+When using text as a placeholder, the last two characters are displayed by default, and hover displayed the full text.
+
+You can also customize how to abbreviate it via the textFormatter method.
+
+:::demo
+
+```html
+<template>
+  <div class="demo-type">
+    <div>
+      <el-avatar text="James Gosling" bgColor="#409eff"></el-avatar>
+    </div>
+    <div>
+      <el-avatar
+        text="Unassigned"
+        bgColor="#409eff"
+        :text-formatter="(s) => s.slice(0, 1)"
+        :font-size="15"
+      ></el-avatar>
+    </div>
+    <div>
+      <el-avatar
+        text="Linus Torvalds"
+        bgColor="#409eff"
+        :text-formatter="(s) => s.split(' ').map(s=>s[0]).join('')"
+      ></el-avatar>
+    </div>
+  </div>
+</template>
+```
+
 :::
 
 ### How the image fit its container
@@ -132,6 +216,11 @@ Set how the image fit its container for an image avatar, same as [object-fit](ht
 | srcSet            | A list of one or more strings separated by commas indicating a set of possible image sources for the user agent to use | string |        |      |
 | alt               | This attribute defines an alternative text description of the image | string |        |      |
 | fit               | set how the image fit its container for an image avatar | string |    fill / contain / cover / none / scale-down    |   cover   |
+| text              | When images cannot be loaded and no default slot is not used, will take the result of the textFormatter and use it as a text placeholder. will also be used for the default content of the tooltip | string        |                                            |                        |
+| fontSize          | set text placeholders  size     | number        |                                            | 12                     |
+| bgColor           | set background color   | string        |                                            | #c0c4cc                |
+| textFormatter  | format text to show the abbreviation in the avatar placeholder, last two characters by default  | function      |                                            | (str) => str.slice(-2) |
+| tooltip           | set tooltip content, if empty, take text as the tooltip content.    | string        |                                            |                        |
 
 ### Events
 
@@ -142,4 +231,5 @@ Set how the image fit its container for an image avatar, same as [object-fit](ht
 ### Slot
 
 | Slot Name | Description | 
+| ------ | ------------------ | -------- |
 | default  | customize avatar content |

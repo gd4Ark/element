@@ -2,6 +2,7 @@
 @import "common/var";
 
 @include b(avatar) {
+    position: relative;
   display: inline-block;
   box-sizing: border-box;
   text-align: center;
@@ -17,6 +18,15 @@
     display: block;
     height: 100%;
     vertical-align: middle;
+  }
+
+  .avatar-text {
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    white-space: nowrap;
+    display: inline-block;
   }
 
   @include m(circle) {
