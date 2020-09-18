@@ -166,7 +166,7 @@ Il est possible d'afficher du contenu un peu plus varié et personnalisé.
 :::
 
 :::tip
-Le contenu de MessageBox peut être `VNode`, Vous permettant de passer des composants personnalisés. Lorsque vous ouvrer MessageBox, Vue compare le nouveau `VNode` avec l'ancien `VNode`, puis détermine comment rafraîchir efficacement l'UI, le composant peut donc ne pas être totalement re-rendu ([#8931](https://github.com/ElemeFE/element/issues/8931)). Dans ce cas, Vous pouvez ajouter une clé unique à `VNode` à chaque fois que MessageBox s'ouvre: [exemple](https://jsfiddle.net/zhiyang/ezmhq2ef).
+Le contenu de MessageBox peut être `VNode`, Vous permettant de passer des composants personnalisés. Lorsque vous ouvrer MessageBox, Vue compare le nouveau `VNode` avec l'ancien `VNode`, puis détermine comment rafraîchir efficacement l'UI, le composant peut donc ne pas être totalement re-rendu ([#8931](https://github.com/femessage/element/issues/8931)). Dans ce cas, Vous pouvez ajouter une clé unique à `VNode` à chaque fois que MessageBox s'ouvre: [exemple](https://jsfiddle.net/zhiyang/ezmhq2ef).
 :::
 
 ### Utiliser du HTML
@@ -290,7 +290,7 @@ Si Element est importé entièrement, il ajoutera les méthodes suivantes à Vue
 Si vous préférer importer `MessageBox` à la demande:
 
 ```javascript
-import { MessageBox } from 'element-ui';
+import { MessageBox } from '@femessage/element-ui';
 ```
 
 Les méthodes correspondantes sont: `MessageBox`, `MessageBox.alert`, `MessageBox.confirm` et `MessageBox.prompt`. Les paramètres sont les mêmes que précédemment.

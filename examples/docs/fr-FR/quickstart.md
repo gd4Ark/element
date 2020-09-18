@@ -22,8 +22,8 @@ Dans main.js:
 
 ```javascript
 import Vue from 'vue';
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from '@femessage/element-ui';
+import '@femessage/element-ui/lib/theme-chalk/index.css';
 import App from './App.vue';
 
 Vue.use(ElementUI);
@@ -67,7 +67,7 @@ Ensuite, si vous n'avez besoin que de Button et Select, éditez main.js comme su
 
 ```javascript
 import Vue from 'vue';
-import { Button, Select } from 'element-ui';
+import { Button, Select } from '@femessage/element-ui';
 import App from './App.vue';
 
 Vue.component(Button.name, Button);
@@ -83,7 +83,7 @@ new Vue({
 });
 ```
 
-Exemple complet (liste complète des composants dans [components.json](https://github.com/ElemeFE/element/blob/master/components.json)):
+Exemple complet (liste complète des composants dans [components.json](https://github.com/femessage/element/blob/master/components.json)):
 
 ```javascript
 import Vue from 'vue';
@@ -165,7 +165,7 @@ import {
   MessageBox,
   Message,
   Notification
-} from 'element-ui';
+} from '@femessage/element-ui';
 
 Vue.use(Pagination);
 Vue.use(Dialog);
@@ -260,7 +260,7 @@ Import total d'Element：
 
 ```js
 import Vue from 'vue';
-import Element from 'element-ui';
+import Element from '@femessage/element-ui';
 Vue.use(Element, { size: 'small', zIndex: 3000 });
 ```
 
@@ -268,7 +268,7 @@ Import partiel d'Element：
 
 ```js
 import Vue from 'vue';
-import { Button } from 'element-ui';
+import { Button } from '@femessage/element-ui';
 
 Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 };
 Vue.use(Button);
