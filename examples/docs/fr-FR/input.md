@@ -354,7 +354,7 @@ Vous pouvez obtenir de l'aide ou des suggestions basées sur ce que vous entrez.
       loadAll() {
         return [
           { "value": "vue", "link": "https://github.com/vuejs/vue" },
-          { "value": "element", "link": "https://github.com/ElemeFE/element" },
+          { "value": "element", "link": "https://github.com/femessage/element" },
           { "value": "cooking", "link": "https://github.com/ElemeFE/cooking" },
           { "value": "mint-ui", "link": "https://github.com/ElemeFE/mint-ui" },
           { "value": "vuex", "link": "https://github.com/vuejs/vuex" },
@@ -438,7 +438,7 @@ Vous pouvez personnaliser la manière dont les suggestions sont affichées.
       loadAll() {
         return [
           { "value": "vue", "link": "https://github.com/vuejs/vue" },
-          { "value": "element", "link": "https://github.com/ElemeFE/element" },
+          { "value": "element", "link": "https://github.com/femessage/element" },
           { "value": "cooking", "link": "https://github.com/ElemeFE/cooking" },
           { "value": "mint-ui", "link": "https://github.com/ElemeFE/mint-ui" },
           { "value": "vuex", "link": "https://github.com/vuejs/vuex" },
@@ -486,7 +486,7 @@ Vous pouvez aller chercher des infos de suggestions sur un serveur distant.
       loadAll() {
         return [
           { "value": "vue", "link": "https://github.com/vuejs/vue" },
-          { "value": "element", "link": "https://github.com/ElemeFE/element" },
+          { "value": "element", "link": "https://github.com/femessage/element" },
           { "value": "cooking", "link": "https://github.com/ElemeFE/cooking" },
           { "value": "mint-ui", "link": "https://github.com/ElemeFE/mint-ui" },
           { "value": "vuex", "link": "https://github.com/vuejs/vuex" },

@@ -355,7 +355,7 @@ You can get some recommended tips based on the current input.
       loadAll() {
         return [
           { "value": "vue", "link": "https://github.com/vuejs/vue" },
-          { "value": "element", "link": "https://github.com/ElemeFE/element" },
+          { "value": "element", "link": "https://github.com/femessage/element" },
           { "value": "cooking", "link": "https://github.com/ElemeFE/cooking" },
           { "value": "mint-ui", "link": "https://github.com/ElemeFE/mint-ui" },
           { "value": "vuex", "link": "https://github.com/vuejs/vuex" },
@@ -439,7 +439,7 @@ Customize how suggestions are displayed.
       loadAll() {
         return [
           { "value": "vue", "link": "https://github.com/vuejs/vue" },
-          { "value": "element", "link": "https://github.com/ElemeFE/element" },
+          { "value": "element", "link": "https://github.com/femessage/element" },
           { "value": "cooking", "link": "https://github.com/ElemeFE/cooking" },
           { "value": "mint-ui", "link": "https://github.com/ElemeFE/mint-ui" },
           { "value": "vuex", "link": "https://github.com/vuejs/vuex" },
@@ -487,7 +487,7 @@ Search data from server-side.
       loadAll() {
         return [
           { "value": "vue", "link": "https://github.com/vuejs/vue" },
-          { "value": "element", "link": "https://github.com/ElemeFE/element" },
+          { "value": "element", "link": "https://github.com/femessage/element" },
           { "value": "cooking", "link": "https://github.com/ElemeFE/cooking" },
           { "value": "mint-ui", "link": "https://github.com/ElemeFE/mint-ui" },
           { "value": "vuex", "link": "https://github.com/vuejs/vuex" },
