@@ -136,7 +136,12 @@
       </el-avatar>
     </div>
     <div>
-      <el-avatar text="张全蛋" bgColor="#409eff"></el-avatar>
+      <el-avatar
+        src="https://empty"
+        @error="errorHandler"
+        text="张全蛋"
+        bgColor="#409eff"
+      ></el-avatar>
     </div>
   </div>
 </template>

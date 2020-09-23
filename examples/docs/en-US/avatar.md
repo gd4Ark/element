@@ -136,7 +136,12 @@ customize the display via the default slot, or by using `text` as a placeholder.
       </el-avatar>
     </div>
     <div>
-      <el-avatar text="James Gosling" bgColor="#409eff"></el-avatar>
+      <el-avatar
+        src="https://empty"
+        @error="errorHandler"
+        text="James Gosling"
+        bgColor="#409eff"
+      ></el-avatar>
     </div>
   </div>
 </template>
