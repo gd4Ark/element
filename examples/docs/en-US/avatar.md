@@ -7,42 +7,49 @@ Avatars can be used to represent people or objects. It supports images, Icons, o
 use `shape` and `size` prop to set avatar's shape and size
 
 :::demo
+
 ```html
 <template>
   <el-row class="demo-avatar demo-basic">
     <el-col :span="12">
       <div class="sub-title">circle</div>
       <div class="demo-basic--circle">
-        <div class="block"><el-avatar :size="50" :src="circleUrl"></el-avatar></div>
+        <div class="block">
+          <el-avatar :size="50" :src="circleUrl"></el-avatar>
+        </div>
         <div class="block" v-for="size in sizeList" :key="size">
           <el-avatar :size="size" :src="circleUrl"></el-avatar>
         </div>
       </div>
-    </el-col>  
+    </el-col>
     <el-col :span="12">
       <div class="sub-title">square</div>
       <div class="demo-basic--circle">
-        <div class="block"><el-avatar shape="square" :size="50" :src="squareUrl"></el-avatar></div>
+        <div class="block">
+          <el-avatar shape="square" :size="50" :src="squareUrl"></el-avatar>
+        </div>
         <div class="block" v-for="size in sizeList" :key="size">
           <el-avatar shape="square" :size="size" :src="squareUrl"></el-avatar>
         </div>
       </div>
-    </el-col> 
+    </el-col>
   </el-row>
 </template>
 <script>
   export default {
-    data () {
+    data() {
       return {
-        circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
-        squareUrl: "https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png",
-        sizeList: ["large", "medium", "small"]
+        circleUrl:
+          'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+        squareUrl:
+          'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png',
+        sizeList: ['large', 'medium', 'small'],
       }
-    }
+    },
   }
 </script>
-
 ```
+
 :::
 
 ### Types
@@ -50,6 +57,7 @@ use `shape` and `size` prop to set avatar's shape and size
 It supports images, Icons, or characters
 
 :::demo
+
 ```html
 <template>
   <div class="demo-type">
@@ -57,7 +65,9 @@ It supports images, Icons, or characters
       <el-avatar icon="el-icon-user-solid"></el-avatar>
     </div>
     <div>
-      <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+      <el-avatar
+        src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+      ></el-avatar>
     </div>
     <div>
       <el-avatar> user </el-avatar>
@@ -65,11 +75,12 @@ It supports images, Icons, or characters
   </div>
 </template>
 ```
+
 :::
 
 ### Tooltip
 
-When there is an incoming text or tooltip support hover display, you can also customize tooltip content by tooltip.
+If `text` or `tooltip` exist, The tooltips can be displayed when the mouse hovers
 
 :::demo
 
@@ -106,14 +117,14 @@ When there is an incoming text or tooltip support hover display, you can also cu
 
 :::
 
-
 ### Fallback when image load error
 
 fallback when image load error or src is empty
 
-customize the display via the default slot, or pass a placeholder text by passing the text attribute
+customize the display via the default slot, or by using `text` as a placeholder.
 
 :::demo
+
 ```html
 <template>
   <div class="demo-type">
@@ -142,11 +153,11 @@ customize the display via the default slot, or pass a placeholder text by passin
 
 :::
 
-### Abbreviated name
+### Custom Text Formatter
 
 When using text as a placeholder, the last two characters are displayed by default, and hover displayed the full text.
 
-You can also customize how to abbreviate it via the textFormatter method.
+You can also customize how to abbreviate it via the `textFormatter` method.
 
 :::demo
 
@@ -182,12 +193,13 @@ You can also customize how to abbreviate it via the textFormatter method.
 Set how the image fit its container for an image avatar, same as [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit).
 
 :::demo
+
 ```html
 <template>
   <div class="demo-fit">
     <div class="block" v-for="fit in fits" :key="fit">
-        <span class="title">{{ fit }}</span>
-        <el-avatar shape="square" :size="100" :fit="fit" :src="url"></el-avatar>
+      <span class="title">{{ fit }}</span>
+      <el-avatar shape="square" :size="100" :fit="fit" :src="url"></el-avatar>
     </div>
   </div>
 </template>
@@ -196,40 +208,41 @@ Set how the image fit its container for an image avatar, same as [object-fit](ht
     data() {
       return {
         fits: ['fill', 'contain', 'cover', 'none', 'scale-down'],
-        url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+        url:
+          'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
       }
-    }
+    },
   }
 </script>
-
 ```
+
 :::
 
 ### Attributes
 
-| Attribute      | Description          | Type      | Accepted Values       | Default  |
-| ----------------- | -------------------------------- | --------------- | ------ | ------ |
-| icon              | set representation type to Icon, more info on Icon Component   | string          |        |        |
-| size              | set avatar size                     | number/string | number / large / medium / small | large  |
-| shape             | set avatar shape  | string |    circle / square     |   circle  |
-| src               | the address of the image for an image avatar | string |        |      |
-| srcSet            | A list of one or more strings separated by commas indicating a set of possible image sources for the user agent to use | string |        |      |
-| alt               | This attribute defines an alternative text description of the image | string |        |      |
-| fit               | set how the image fit its container for an image avatar | string |    fill / contain / cover / none / scale-down    |   cover   |
-| text              | When images cannot be loaded and no default slot is not used, will take the result of the textFormatter and use it as a text placeholder. will also be used for the default content of the tooltip | string        |                                            |                        |
-| fontSize          | set text placeholders  size     | number        |                                            | 12                     |
-| bgColor           | set background color   | string        |                                            | #c0c4cc                |
-| textFormatter  | format text to show the abbreviation in the avatar placeholder, last two characters by default  | function      |                                            | (str) => str.slice(-2) |
-| tooltip           | set tooltip content, if empty, take text as the tooltip content.    | string        |                                            |                        |
+| Attribute     | Description                                                                                                                                                                                        | Type          | Accepted Values                            | Default                |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------ | ---------------------- |
+| icon          | set representation type to Icon, more info on Icon Component                                                                                                                                       | string        |                                            |                        |
+| size          | set avatar size                                                                                                                                                                                    | number/string | number / large / medium / small            | large                  |
+| shape         | set avatar shape                                                                                                                                                                                   | string        | circle / square                            | circle                 |
+| src           | the address of the image for an image avatar                                                                                                                                                       | string        |                                            |                        |
+| srcSet        | A list of one or more strings separated by commas indicating a set of possible image sources for the user agent to use                                                                             | string        |                                            |                        |
+| alt           | This attribute defines an alternative text description of the image                                                                                                                                | string        |                                            |                        |
+| fit           | set how the image fit its container for an image avatar                                                                                                                                            | string        | fill / contain / cover / none / scale-down | cover                  |
+| text          | When images cannot be loaded and no default slot is not used, will take the result of the textFormatter and use it as a text placeholder. will also be used for the default content of the tooltip | string        |                                            |                        |
+| fontSize      | set text placeholders size                                                                                                                                                                         | number        |                                            | 12                     |
+| bgColor       | set background color                                                                                                                                                                               | string        |                                            | #c0c4cc                |
+| textFormatter | format `text` to show the abbreviation in the avatar placeholder, last two characters by default                                                                                                   | function      |                                            | (str) => str.slice(-2) |
+| tooltip       | set tooltip content, if empty, take `text` as the tooltip content.                                                                                                                                 | string        |                                            |                        |
 
 ### Events
 
-| Event Name | Description         | Parameters  |
-| ------ | ------------------ | -------- |
-| error  | handler when img load error, return false to prevent default fallback behavior |(e: Event)  |
+| Event Name | Description                                                                    | Parameters |
+| ---------- | ------------------------------------------------------------------------------ | ---------- |
+| error      | handler when img load error, return false to prevent default fallback behavior | (e: Event) |
 
 ### Slot
 
-| Slot Name | Description | 
-| ------ | ------------------ | -------- |
-| default  | customize avatar content |
+| Slot Name | Description              |
+| --------- | ------------------------ |
+| default   | customize avatar content |
