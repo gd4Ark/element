@@ -10,7 +10,8 @@ export default {
           return ['large', 'medium', 'small'].includes(val);
         }
         return typeof val === 'number';
-      }
+      },
+      default: 'large'
     },
     shape: {
       type: String,
@@ -27,6 +28,26 @@ export default {
     fit: {
       type: String,
       default: 'cover'
+    },
+    text: {
+      type: String,
+      default: ''
+    },
+    fontSize: {
+      type: Number,
+      default: 12
+    },
+    bgColor: {
+      type: String,
+      default: '#C0C4CC'
+    },
+    textFormatter: {
+      type: Function,
+      default: (str) => str.slice(-2)
+    },
+    tooltip: {
+      type: String,
+      default: ''
     }
   },
 
@@ -39,7 +60,7 @@ export default {
   computed: {
     avatarClass() {
       const { size, icon, shape } = this;
-      let classList = ['el-avatar'];
+      const classList = ['el-avatar'];
 
       if (size && typeof size === 'string') {
         classList.push(`el-avatar--${size}`);
@@ -66,42 +87,80 @@ export default {
       }
     },
     renderAvatar() {
-      const { icon, src, alt, isImageExist, srcSet, fit } = this;
+      const {
+        icon,
+        src,
+        text,
+        alt,
+        isImageExist,
+        srcSet,
+        fit,
+        fontSize,
+        textFormatter
+      } = this;
 
       if (isImageExist && src) {
-        return <img
-          src={src}
-          onError={this.handleError}
-          alt={alt}
-          srcSet={srcSet}
-          style={{ 'object-fit': fit }}/>;
+        return (
+          <img
+            src={src}
+            onError={this.handleError}
+            alt={alt}
+            srcSet={srcSet}
+            style={{ 'object-fit': fit }}
+          />
+        );
       }
 
       if (icon) {
-        return (<i class={icon} />);
+        return <i class={icon} />;
       }
 
-      return this.$slots.default;
+      if (this.$slots.default) {
+        return this.$slots.default;
+      }
+
+      const textStyle = {
+        transform: `translate(-50%, -50%) scale(${fontSize / 12})`
+      };
+
+      return (
+        <span class="avatar-text" style={textStyle}>
+          {textFormatter(text)}
+        </span>
+      );
     }
   },
 
   render() {
-    const { avatarClass, size } = this;
+    const { avatarClass, size, bgColor, text, tooltip } = this;
 
-    const sizeStyle = typeof size === 'number' ? {
-      height: `${size}px`,
-      width: `${size}px`,
-      lineHeight: `${size}px`
-    } : {};
+    const sizeStyle =
+      typeof size === 'number'
+        ? {
+          height: `${size}px`,
+          width: `${size}px`,
+          lineHeight: `${size}px`
+        }
+        : {};
+
+    const bgStyle = {
+      backgroundColor: bgColor
+    };
+
+    const style = { ...sizeStyle, ...bgStyle };
 
     return (
-      <span class={ avatarClass } style={ sizeStyle }>
-        {
-          this.renderAvatar()
-        }
-      </span>
+      <el-tooltip
+        disabled={!(tooltip || text)}
+        content={tooltip || text}
+        placement="top"
+        popper-class="el-avatar-popper"
+      >
+        <span class={avatarClass} style={style}>
+          {this.renderAvatar()}
+        </span>
+      </el-tooltip>
     );
   }
-
 };
 </script>
