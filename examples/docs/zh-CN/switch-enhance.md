@@ -33,12 +33,11 @@
   active-text="按月付费"
   inactive-text="按年付费"
 />
-
 <script>
 export default {
   data() {
     return {
-      value1: true
+      value1: '按月付费'
     }
   }
 }
