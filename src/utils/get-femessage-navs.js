@@ -1,6 +1,6 @@
 const defaultBaseUrl = 'https://frontend-infra.deepexi.com/#/material';
 const navListUrl =
-  '//mockapi.eolinker.com/jttjNwp60fc1c9e944fdf1cc494b28a7ca4cfe66bbafee1/open';
+  '//mockapi.eolinker.com/jttjNwp60fc1c9e944fdf1cc494b28a7ca4cfe66bbafee1/prod/open';
 
 // 只要有一个设置了 frontendInfraBaseUrl，就相当于全部都设置了这个值
 export function getFrontendInfraBaseUrl(navs) {
